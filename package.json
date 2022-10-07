@@ -1,0 +1,30 @@
+{
+  "name": "getflix_watchhistory",
+  "description": "Watch history microservice for Getflix",
+  "version": "1.0.0",
+  "main": "./server/server.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "start": "nodemon server.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpp36-boc-catamaran/getflix_watchhistory.git"
+  },
+  "author": "Shiwei Chen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rpp36-boc-catamaran/getflix_watchhistory/issues"
+  },
+  "homepage": "https://github.com/rpp36-boc-catamaran/getflix_watchhistory#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "jest": "^29.1.2",
+    "supertest": "^6.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
