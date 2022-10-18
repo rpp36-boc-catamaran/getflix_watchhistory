@@ -12,6 +12,8 @@ app.get(`/`, (req, res) => {
 })
 
 app.get(`/profile`, (req, res) => {
+  // console.log('req here: ', req)
+
   let userId = 1;
   db.getHistory(userId)
   .then((data) => {
