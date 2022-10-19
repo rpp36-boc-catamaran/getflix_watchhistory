@@ -29,13 +29,14 @@ app.get(`/profile`, (req, res) => {
 })
 
 app.post('/main', (req, res) => {
-  // console.log('here: ', req.body);
-  const userId = req.body.user_id;
-  const movieId = req.body.movie_id;;
+  const userId = req.body.userId;
+  const movieId = req.body.movieId;;
+  // console.log('userId: ', userId)
+  // console.log('movieId: ', movieId)
 
   db.postHistory(userId, movieId)
   .then(() => {
-    res.status(201).send('Success post history data');
+    res.status(201).send('Success POST history data at DB!');
   })
   .catch(err => {
     res.status(400).send(err);

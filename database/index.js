@@ -22,7 +22,7 @@ const getHistory = (userId) => {
       if (err) {
         reject(err);
       } else {
-        console.log('here: ', result)
+        // console.log('here: ', result)
         resolve(result);
       }
     })
