@@ -11,8 +11,7 @@ app.get(`/`, (req, res) => {
   res.send('Welcome to the profile page!')
 })
 
-app.get(`/profile`, (req, res) => {
-  // console.log('req here: ', req)
+app.get(`/profile/gethistory`, (req, res) => {
 
   let userId = 1;
   db.getHistory(userId)
@@ -28,11 +27,9 @@ app.get(`/profile`, (req, res) => {
   })
 })
 
-app.post('/main', (req, res) => {
+app.post('/main/updatehistory', (req, res) => {
   const userId = req.body.userId;
   const movieId = req.body.movieId;;
-  // console.log('userId: ', userId)
-  // console.log('movieId: ', movieId)
 
   db.postHistory(userId, movieId)
   .then(() => {
@@ -43,4 +40,30 @@ app.post('/main', (req, res) => {
   })
 })
 
+app.delete(`/profile/removeeachmovie`, (req, res) => {
+  let userId = 1;
+  const movieId = req.body.movieId;;
+
+  db.deletEachMovie(userId, movieId)
+  .then((data) => {
+    res.status(200).send('Success DELETE the movie from history at DB!');
+  })
+  .catch((err) => {
+    res.status(400).send(err);
+  })
+})
+
+app.delete(`/profile/clearhistory`, (req, res) => {
+  const userId = req.body.userId;
+
+  db.deletAllMovies(userId)
+  .then((data) => {
+    res.status(200).send('Success DELETE all movies from history at DB!');
+  })
+  .catch((err) => {
+    res.status(400).send(err);
+  })
+})
+
 module.exports = app;
+
