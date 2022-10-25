@@ -4,6 +4,6 @@ CREATE DATABASE boc_history;
 DROP TABLE IF EXISTS history;
 CREATE TABLE history (
 id serial PRIMARY KEY,
-user_id int,
-movie_id int
+user_id int NOT NULL,
+movie_id int NOT NULL
 );

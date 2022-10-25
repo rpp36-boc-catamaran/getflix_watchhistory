@@ -10,7 +10,6 @@ const pool = new Pool({
   port: process.env.PORT,
 })
 
-
 const getHistory = (userId) => {
   return new Promise ((resolve, reject) => {
     let queryQuestions = `
@@ -21,8 +20,10 @@ const getHistory = (userId) => {
     `
     pool.query(queryQuestions, (err, result) => {
       if (err) {
+        console.log('err in DB: ', err)
         reject(err);
       } else {
+        console.log('success in DB: ', result)
         resolve(result);
       }
     })
