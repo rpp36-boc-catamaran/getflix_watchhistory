@@ -11,7 +11,7 @@ app.get(`/profile/gethistory`, (req, res) => {
   let userId = req.query.user_id;
 
   db.getHistory(userId)
-  .then((data) => {  d
+  .then((data) => {
     let historyList = [];
     for (let i = 0; i < data.rows.length; i++) {
       historyList.push(data.rows[i]['movie_id'])
