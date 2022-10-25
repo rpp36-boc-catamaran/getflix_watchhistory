@@ -12,8 +12,8 @@ app.get(`/`, (req, res) => {
 })
 
 app.get(`/profile/gethistory`, (req, res) => {
+  let userId = req.body.userId;
 
-  let userId = 1;
   db.getHistory(userId)
   .then((data) => {
     let historyList = [];
@@ -41,8 +41,8 @@ app.post('/main/updatehistory', (req, res) => {
 })
 
 app.delete(`/profile/removeeachmovie`, (req, res) => {
-  let userId = 1;
-  const movieId = req.body.movieId;;
+  let userId = req.body.userId;;
+  const movieId = req.body.movieId;
 
   db.deletEachMovie(userId, movieId)
   .then((data) => {
