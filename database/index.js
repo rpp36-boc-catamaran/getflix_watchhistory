@@ -16,13 +16,13 @@ const getHistory = (userId) => {
     let queryQuestions = `
     SELECT movie_id
     FROM history
-    WHERE user_id = ${userId};
+    WHERE user_id = ${userId}
+    ORDER BY id DESC;
     `
     pool.query(queryQuestions, (err, result) => {
       if (err) {
         reject(err);
       } else {
-        // console.log('here: ', result)
         resolve(result);
       }
     })
@@ -46,9 +46,42 @@ const postHistory = (userId, movieId) => {
   })
 }
 
+const deletEachMovie = (userId, movieId) => {
+  return new Promise ((resolve, reject) => {
+    let queryDeleteEachMovie = `
+    DELETE FROM history
+    WHERE user_id = ${userId} AND movie_id = ${movieId};
+    `
+    pool.query(queryDeleteEachMovie, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    })
+  })
+}
+
+const deletAllMovies = (userId) => {
+  return new Promise ((resolve, reject) => {
+    let queryDeleteAllMovies = `
+    DELETE FROM history
+    WHERE user_id = ${userId};
+    `
+    pool.query(queryDeleteAllMovies, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    })
+  })
+}
 
 module.exports = {
   getHistory,
   postHistory,
+  deletEachMovie,
+  deletAllMovies
 };
 
