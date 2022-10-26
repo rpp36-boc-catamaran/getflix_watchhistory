@@ -81,6 +81,7 @@ module.exports = {
   getHistory,
   postHistory,
   deletEachMovie,
-  deletAllMovies
+  deletAllMovies,
+  pool,
 };
 
