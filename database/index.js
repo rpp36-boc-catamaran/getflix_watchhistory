@@ -10,7 +10,6 @@ const pool = new Pool({
   port: process.env.PORT,
 })
 
-
 const getHistory = (userId) => {
   return new Promise ((resolve, reject) => {
     let queryQuestions = `
@@ -82,6 +81,7 @@ module.exports = {
   getHistory,
   postHistory,
   deletEachMovie,
-  deletAllMovies
+  deletAllMovies,
+  pool,
 };
 

@@ -3,16 +3,12 @@ const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 const app = express()
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
-
-app.get(`/`, (req, res) => {
-  res.send('Welcome to the profile page!')
-})
 
 app.get(`/profile/gethistory`, (req, res) => {
-  let userId = req.body.userId;
+  let userId = req.query.user_id;
 
   db.getHistory(userId)
   .then((data) => {
